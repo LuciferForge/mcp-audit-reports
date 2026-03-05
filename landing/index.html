@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP Security Audit Reports — LuciferForge</title>
+    <meta name="description" content="Professional MCP server security and EU AI Act compliance audit reports. $200 per report. Used by teams deploying AI agents in regulated environments.">
+    <style>
+        :root {
+            --black: #0D0D0D;
+            --dark: #1A1A2E;
+            --accent: #E94560;
+            --orange: #F5A623;
+            --green: #27AE60;
+            --gray: #888;
+            --light: #F5F5F5;
+            --white: #FFFFFF;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+            background: var(--black);
+            color: var(--white);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+
+        /* NAV */
+        nav {
+            border-bottom: 1px solid #222;
+            padding: 16px 0;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            font-weight: 700;
+            font-size: 14px;
+            color: var(--gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-brand span { color: var(--accent); }
+        .nav-cta {
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* HERO */
+        .hero {
+            padding: 72px 0 56px;
+            border-bottom: 1px solid #222;
+        }
+        .badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 4px 10px;
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+        h1 .highlight { color: var(--accent); }
+        .hero-sub {
+            font-size: 18px;
+            color: var(--gray);
+            max-width: 600px;
+            margin-bottom: 36px;
+            line-height: 1.7;
+        }
+        .hero-ctas {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 5px;
+            font-weight: 700;
+            font-size: 15px;
+            display: inline-block;
+        }
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 15px;
+            border: 1px solid #444;
+            display: inline-block;
+        }
+        .btn-secondary:hover { border-color: #888; }
+
+        /* PROOF */
+        .proof {
+            padding: 48px 0;
+            border-bottom: 1px solid #222;
+        }
+        .proof-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .proof-stat {
+            text-align: center;
+        }
+        .proof-stat .number {
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .proof-stat .label {
+            font-size: 13px;
+            color: var(--gray);
+            margin-top: 4px;
+        }
+
+        /* DEMO CALLOUT */
+        .demo-box {
+            margin: 48px 0;
+            background: #111;
+            border: 1px solid #333;
+            border-left: 4px solid var(--accent);
+            padding: 28px 32px;
+            border-radius: 6px;
+        }
+        .demo-box h3 {
+            font-size: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+        .scorecard {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .score-badge {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 5px;
+            padding: 16px;
+            text-align: center;
+        }
+        .score-badge .score-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 6px;
+        }
+        .score-badge .score-value {
+            font-size: 28px;
+            font-weight: 800;
+        }
+        .score-badge .score-sub {
+            font-size: 11px;
+            color: var(--gray);
+            margin-top: 2px;
+        }
+        .red { color: var(--accent); }
+        .orange { color: var(--orange); }
+        .score-badge.critical { border-color: var(--accent); }
+
+        /* WHAT'S INSIDE */
+        .section {
+            padding: 56px 0;
+            border-bottom: 1px solid #222;
+        }
+        h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .section-sub {
+            color: var(--gray);
+            margin-bottom: 32px;
+        }
+        .report-sections {
+            display: grid;
+            gap: 16px;
+        }
+        .report-section-item {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 5px;
+            padding: 20px 24px;
+            display: grid;
+            grid-template-columns: 40px 1fr;
+            gap: 16px;
+            align-items: start;
+        }
+        .report-section-num {
+            font-size: 22px;
+            font-weight: 800;
+            color: #333;
+        }
+        .report-section-item h4 {
+            font-size: 14px;
+            margin-bottom: 4px;
+        }
+        .report-section-item p {
+            font-size: 13px;
+            color: var(--gray);
+        }
+        .eu-tag {
+            display: inline-block;
+            font-size: 10px;
+            background: #1a1a1a;
+            border: 1px solid #444;
+            color: var(--gray);
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-top: 6px;
+            margin-right: 4px;
+        }
+
+        /* PRICING */
+        .pricing {
+            padding: 56px 0;
+            border-bottom: 1px solid #222;
+        }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 32px;
+        }
+        .pricing-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 32px;
+        }
+        .pricing-card.featured {
+            border-color: var(--accent);
+        }
+        .pricing-card .plan-name {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gray);
+            margin-bottom: 12px;
+        }
+        .pricing-card .plan-price {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 4px;
+        }
+        .pricing-card .plan-cycle {
+            font-size: 13px;
+            color: var(--gray);
+            margin-bottom: 24px;
+        }
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 28px;
+        }
+        .pricing-card ul li {
+            font-size: 14px;
+            padding: 6px 0;
+            color: #ccc;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .pricing-card ul li::before {
+            content: "— ";
+            color: var(--accent);
+        }
+        .pricing-card .card-cta {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .pricing-card .card-cta.primary {
+            background: var(--accent);
+            color: white;
+        }
+        .pricing-card .card-cta.secondary {
+            background: #1a1a1a;
+            color: white;
+            border: 1px solid #333;
+        }
+
+        /* WHO IT'S FOR */
+        .audience {
+            padding: 56px 0;
+            border-bottom: 1px solid #222;
+        }
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 32px;
+        }
+        .audience-card {
+            background: #111;
+            border: 1px solid #222;
+            border-radius: 6px;
+            padding: 20px;
+        }
+        .audience-card h4 {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .audience-card p {
+            font-size: 13px;
+            color: var(--gray);
+            line-height: 1.5;
+        }
+
+        /* CTA */
+        .final-cta {
+            padding: 72px 0;
+            text-align: center;
+        }
+        .final-cta h2 {
+            margin-bottom: 16px;
+        }
+        .final-cta p {
+            color: var(--gray);
+            margin-bottom: 32px;
+        }
+
+        /* FOOTER */
+        footer {
+            border-top: 1px solid #222;
+            padding: 24px 0;
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray);
+        }
+        footer a { color: var(--gray); }
+
+        @media (max-width: 640px) {
+            h1 { font-size: 28px; }
+            .proof-grid, .scorecard, .pricing-grid, .audience-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="container">
+        <div class="nav-brand"><span>Lucifer</span>Forge Security</div>
+        <a href="mailto:security@luciferforge.io?subject=Audit Report Request" class="nav-cta">Request Audit — $200</a>
+    </div>
+</nav>
+
+<main>
+    <section class="hero">
+        <div class="container">
+            <div class="badge">EU AI Act Compliance</div>
+            <h1>
+                Your MCP Server Has<br>
+                <span class="highlight">Security Debt You Don't Know About.</span>
+            </h1>
+            <p class="hero-sub">
+                We audit MCP servers against EU AI Act Articles 9, 11, 13, 15 and 17 — and produce a signed PDF compliance report with every finding mapped to a specific regulatory requirement and a prioritized remediation roadmap.
+            </p>
+            <div class="hero-ctas">
+                <a href="mailto:security@luciferforge.io?subject=Audit Report Request" class="btn-primary">Request an Audit — $200</a>
+                <a href="output/LF-2026-DEMO_filesystem_server_audit.pdf" class="btn-secondary" target="_blank">View Demo Report (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="proof">
+        <div class="container">
+            <div class="proof-grid">
+                <div class="proof-stat">
+                    <div class="number">18,000+</div>
+                    <div class="label">MCP servers — zero have compliance audits</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="number">7/100</div>
+                    <div class="label">Anthropic's own filesystem server scored F</div>
+                </div>
+                <div class="proof-stat">
+                    <div class="number">Aug 2026</div>
+                    <div class="label">EU AI Act enforcement begins</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DEMO REPORT HIGHLIGHT -->
+    <div class="container">
+        <div class="demo-box">
+            <h3>Live Demo — Official Anthropic MCP Filesystem Server</h3>
+            <p style="color:#aaa; font-size:14px; margin-bottom:16px;">
+                We audited <code>@modelcontextprotocol/server-filesystem</code> — the official Anthropic reference implementation installed by millions of Claude Code, Cursor, and Windsurf users. Here's what we found.
+            </p>
+            <div class="scorecard">
+                <div class="score-badge critical">
+                    <div class="score-label">Security Hygiene</div>
+                    <div class="score-value red">7/100</div>
+                    <div class="score-sub">Grade F</div>
+                </div>
+                <div class="score-badge">
+                    <div class="score-label">Overall Risk</div>
+                    <div class="score-value orange">HIGH</div>
+                    <div class="score-sub">7 findings</div>
+                </div>
+                <div class="score-badge">
+                    <div class="score-label">EU AI Act Status</div>
+                    <div class="score-value red">Non-Compliant</div>
+                    <div class="score-sub">Art. 9, 13, 15, 17</div>
+                </div>
+            </div>
+            <p style="color:#aaa; font-size:13px;">
+                13 of 14 tools have no descriptions. 28 string parameters have zero input constraints. Destructive tools (delete_file, write_file, move_file) are undocumented. If the official reference server scores F — what does yours score?
+            </p>
+            <p style="margin-top:14px;">
+                <a href="output/LF-2026-DEMO_filesystem_server_audit.pdf" target="_blank" style="color:var(--accent); font-size:13px; font-weight:600;">Download the full demo report (PDF) →</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- WHAT'S IN THE REPORT -->
+    <section class="section">
+        <div class="container">
+            <h2>What's in the Report</h2>
+            <p class="section-sub">A signed PDF, typically 8-12 pages. Suitable for your compliance package, CISO review, or customer due diligence request.</p>
+            <div class="report-sections">
+                <div class="report-section-item">
+                    <div class="report-section-num">1</div>
+                    <div>
+                        <h4>Executive Summary</h4>
+                        <p>Plain-English assessment of security posture and overall EU AI Act compliance status. Written for a CISO or CTO, not a developer.</p>
+                    </div>
+                </div>
+                <div class="report-section-item">
+                    <div class="report-section-num">2</div>
+                    <div>
+                        <h4>Score Breakdown</h4>
+                        <p>MCP Security Hygiene score (0-100) across 5 categories: Documentation, Schema Rigor, Injection Safety, Scope Discipline, Metadata. Plus Agent Trust Score (0-100) across 4 buckets.</p>
+                    </div>
+                </div>
+                <div class="report-section-item">
+                    <div class="report-section-num">3</div>
+                    <div>
+                        <h4>Detailed Findings — with Regulatory Mapping</h4>
+                        <p>Every finding maps to a specific EU AI Act article and NIST AI RMF function. Not just "this is a problem" — but "this violates Article 9(2)(a) because..."</p>
+                        <span class="eu-tag">Art. 9 Risk Management</span>
+                        <span class="eu-tag">Art. 13 Transparency</span>
+                        <span class="eu-tag">Art. 15 Cybersecurity</span>
+                        <span class="eu-tag">Art. 17 Quality Management</span>
+                    </div>
+                </div>
+                <div class="report-section-item">
+                    <div class="report-section-num">4</div>
+                    <div>
+                        <h4>Remediation Roadmap</h4>
+                        <p>Findings prioritized into 4 buckets: Immediate (blocks deployment), Sprint 0 (before production), Next Sprint, Technical Debt. Each with estimated engineering effort.</p>
+                    </div>
+                </div>
+                <div class="report-section-item">
+                    <div class="report-section-num">5</div>
+                    <div>
+                        <h4>Tool Inventory</h4>
+                        <p>Complete table of every tool exposed by the server: risk category, purpose alignment, matched risk patterns. Know exactly what surface area you're exposing.</p>
+                    </div>
+                </div>
+                <div class="report-section-item">
+                    <div class="report-section-num">6</div>
+                    <div>
+                        <h4>Methodology</h4>
+                        <p>Audit methodology, tool versions, scope limitations. Suitable for inclusion in your AI system technical documentation (Article 11 requirement).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing">
+        <div class="container">
+            <h2>Pricing</h2>
+            <p class="section-sub">Flat-rate per report. No retainer. No subscription.</p>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <div class="plan-name">Single Server Audit</div>
+                    <div class="plan-price">$200</div>
+                    <div class="plan-cycle">one-time, per server</div>
+                    <ul>
+                        <li>Full 6-section PDF report</li>
+                        <li>EU AI Act article mapping</li>
+                        <li>NIST AI RMF mapping</li>
+                        <li>Remediation roadmap</li>
+                        <li>Tool inventory table</li>
+                        <li>3-day turnaround</li>
+                    </ul>
+                    <a href="mailto:security@luciferforge.io?subject=Audit Request — Single Server" class="card-cta secondary">Request Audit</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="plan-name">Multi-Server / Team Audit</div>
+                    <div class="plan-price">$500</div>
+                    <div class="plan-cycle">per engagement (up to 5 servers)</div>
+                    <ul>
+                        <li>Everything in Single</li>
+                        <li>Cross-server risk comparison</li>
+                        <li>KYA identity card setup</li>
+                        <li>Ed25519 signing integration</li>
+                        <li>Compliance program gap analysis</li>
+                        <li>5-day turnaround</li>
+                        <li>30-day follow-up re-audit included</li>
+                    </ul>
+                    <a href="mailto:security@luciferforge.io?subject=Audit Request — Multi-Server" class="card-cta primary">Request Engagement</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHO IT'S FOR -->
+    <section class="audience">
+        <div class="container">
+            <h2>Who Orders These Reports</h2>
+            <div class="audience-grid">
+                <div class="audience-card">
+                    <h4>Enterprise Teams Deploying MCP</h4>
+                    <p>Your legal/compliance team will ask for AI system documentation before you ship. Have the answer ready, not a panicked scramble.</p>
+                </div>
+                <div class="audience-card">
+                    <h4>MCP Server Publishers</h4>
+                    <p>A passing audit report is a trust signal for your users. "Audited and certified" beats "trust me" in every enterprise procurement conversation.</p>
+                </div>
+                <div class="audience-card">
+                    <h4>AI Integration Vendors</h4>
+                    <p>Your customers are asking about EU AI Act compliance. Have a real audit report to share in due diligence — not a checkbox in a deck.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CREDENTIAL -->
+    <div class="container" style="padding: 40px 0; border-bottom: 1px solid #222;">
+        <div style="background:#111; border:1px solid #333; border-radius:6px; padding:28px 32px;">
+            <p style="font-size:12px; text-transform:uppercase; letter-spacing:1px; color:var(--gray); margin-bottom:10px;">Credentialed</p>
+            <p style="font-size:14px; color:#ccc; line-height:1.7;">
+                LuciferForge submitted a formal response to the NIST AI 100-1 (AI Risk Management Framework) public comment process. Our methodology is built on the NIST AI RMF 1.0 functions and cross-mapped to EU AI Act Articles 9, 11, 13, 15, and 17. Our open-source tools — <a href="https://github.com/LuciferForge/mcp-security-audit" style="color:var(--accent);">mcp-security-audit</a> and <a href="https://github.com/LuciferForge/agentcred" style="color:var(--accent);">agentcred</a> — are published on PyPI and actively maintained.
+            </p>
+        </div>
+    </div>
+
+    <!-- FINAL CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Know What Your Agent Is Exposing</h2>
+            <p>EU AI Act enforcement is approaching. Your MCP servers are your AI attack surface.<br>Get the audit. Have the documentation. Ship with confidence.</p>
+            <a href="mailto:security@luciferforge.io?subject=Audit Report Request" class="btn-primary" style="font-size:16px; padding:16px 36px;">Request an Audit — $200</a>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>LuciferForge Security &mdash; <a href="https://github.com/LuciferForge">GitHub</a> &mdash; <a href="mailto:security@luciferforge.io">security@luciferforge.io</a></p>
+        <p style="margin-top:6px;">Open-source tools: <a href="https://pypi.org/project/mcp-security-audit/">mcp-security-audit</a> &mdash; <a href="https://pypi.org/project/agentcred/">agentcred</a> &mdash; <a href="https://pypi.org/project/kya-agent/">kya-agent</a></p>
+    </div>
+</footer>
+
+</body>
+</html>

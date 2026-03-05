@@ -1,0 +1,17 @@
+{
+  "next_report_number": 2,
+  "reports": [
+    {
+      "id": "LF-2026-DEMO",
+      "server": "@modelcontextprotocol/server-filesystem",
+      "client": "Public Demo",
+      "date": "2026-03-05",
+      "score": 7,
+      "grade": "F",
+      "risk": "HIGH",
+      "status": "delivered",
+      "revenue": 0,
+      "notes": "Portfolio piece — public demo report"
+    }
+  ]
+}
