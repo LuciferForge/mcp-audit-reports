@@ -8,7 +8,7 @@ import os
 
 # Report metadata
 AUDITOR_NAME = os.getenv("AUDITOR_NAME", "LuciferForge Security")
-AUDITOR_EMAIL = os.getenv("AUDITOR_EMAIL", "security@luciferforge.io")
+AUDITOR_EMAIL = os.getenv("AUDITOR_EMAIL", "LuciferForge@proton.me")
 
 # Payment
 PAYPAL_EMAIL = os.getenv("PAYPAL_EMAIL", "")
