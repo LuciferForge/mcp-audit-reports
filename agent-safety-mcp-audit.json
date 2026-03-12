@@ -1,0 +1,187 @@
+{
+  "server": "python3 -m agent_safety_mcp.server",
+  "server_name": "Agent Safety",
+  "server_version": "1.26.0",
+  "risk_profile": "FILE",
+  "server_purpose": [],
+  "purpose_aligned": false,
+  "hygiene_score": 89,
+  "grade": "B",
+  "hygiene_breakdown": {
+    "documentation": 20.0,
+    "schema_rigor": 19.3,
+    "injection_safety": 25,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 17,
+    "resource_count": 0,
+    "prompt_count": 0,
+    "finding_count": 2,
+    "high_risk_tools": 1
+  },
+  "tools": [
+    {
+      "name": "cost_guard_configure",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "cost_guard_status",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "cost_guard_check",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "cost_guard_record",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "cost_guard_models",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "injection_scan",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "injection_check",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "injection_patterns",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "trace_start",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "trace_step",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "trace_summary",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "trace_save",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "save the current trace to disk",
+        "save the current trace to disk",
+        "trace_save"
+      ],
+      "confidence": 2.4
+    },
+    {
+      "name": "kya_generate_keypair",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "kya_create_card",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "kya_sign_card",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "kya_verify_card",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "safety_check",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    }
+  ],
+  "findings": [
+    {
+      "severity": "LOW",
+      "category": "schema",
+      "title": "No string parameters use constraints",
+      "detail": "28 string params lack enum, pattern, maxLength, or format",
+      "tool_name": null
+    },
+    {
+      "severity": "HIGH",
+      "category": "scope",
+      "title": "Unexpected file capability: trace_save",
+      "detail": "Tool classified as FILE but server purpose does not include file operations. Matched: save the current trace to disk, save the current trace to disk, trace_save",
+      "tool_name": "trace_save"
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "live_tests": null,
+  "server_description": "LuciferForge Agent Safety MCP Server"
+}

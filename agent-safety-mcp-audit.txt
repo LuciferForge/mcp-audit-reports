@@ -1,0 +1,60 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       Agent Safety v1.26.0
+  Tools:        17
+  Risk Profile: FILE
+  Hygiene:      89/100  (Grade B)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 20.0   /25
+  Schema Rigor                  19.3   /25
+  Injection Safety              25.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                           89  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  cost_guard_configure           SAFE         -
+  cost_guard_status              SAFE         -
+  cost_guard_check               SAFE         -
+  cost_guard_record              SAFE         -
+  cost_guard_models              SAFE         -
+  injection_scan                 SAFE         -
+  injection_check                SAFE         -
+  injection_patterns             SAFE         -
+  trace_start                    SAFE         -
+  trace_step                     SAFE         -
+  trace_summary                  SAFE         -
+  trace_save                     FILE       !!save the current trace to disk, save the current trace to disk, trace_save
+  kya_generate_keypair           SAFE         -
+  kya_create_card                SAFE         -
+  kya_sign_card                  SAFE         -
+  kya_verify_card                SAFE         -
+  safety_check                   SAFE         -
+
+------------------------------------------------------------
+  FINDINGS
+------------------------------------------------------------
+  .. [LOW] No string parameters use constraints
+     28 string params lack enum, pattern, maxLength, or format
+
+  !! [HIGH] Unexpected file capability: trace_save
+     Tool classified as FILE but server purpose does not include file operations. Matched: save the current trace to disk, save the current trace to disk, trace_save
+
+------------------------------------------------------------
+  Risk Profile: FILE  |  Hygiene: 89/100 Grade B
+  Findings: 2
+    HIGH: 1
+    LOW: 1
+============================================================

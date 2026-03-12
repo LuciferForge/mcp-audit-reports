@@ -1,0 +1,260 @@
+{
+  "server": "npx -y @modelcontextprotocol/server-github",
+  "server_name": "github-mcp-server",
+  "server_version": "0.6.2",
+  "risk_profile": "FILE",
+  "server_purpose": [],
+  "purpose_aligned": false,
+  "hygiene_score": 94,
+  "grade": "A",
+  "hygiene_breakdown": {
+    "documentation": 23.0,
+    "schema_rigor": 20.8,
+    "injection_safety": 25,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 26,
+    "resource_count": 0,
+    "prompt_count": 0,
+    "finding_count": 1,
+    "high_risk_tools": 1
+  },
+  "tools": [
+    {
+      "name": "create_or_update_file",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "create or update a single file"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "name": "search_repositories",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "create_repository",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "get_file_contents",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "push_files",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "create_issue",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "create_pull_request",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "fork_repository",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "create_branch",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "list_commits",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "list_issues",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "update_issue",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "add_issue_comment",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "search_code",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "search_issues",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "search_users",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "get_issue",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "get_pull_request",
+      "category": "NETWORK",
+      "is_high_risk": false,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "get details of a specific pull request"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "name": "list_pull_requests",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "create_pull_request_review",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "merge_pull_request",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "get_pull_request_files",
+      "category": "NETWORK",
+      "is_high_risk": false,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "get the list of files changed in a pull ..."
+      ],
+      "confidence": 0.8
+    },
+    {
+      "name": "get_pull_request_status",
+      "category": "NETWORK",
+      "is_high_risk": false,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "get the combined status of all status ch..."
+      ],
+      "confidence": 0.8
+    },
+    {
+      "name": "update_pull_request_branch",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "get_pull_request_comments",
+      "category": "NETWORK",
+      "is_high_risk": false,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "get the review comments on a pull reques..."
+      ],
+      "confidence": 0.8
+    },
+    {
+      "name": "get_pull_request_reviews",
+      "category": "NETWORK",
+      "is_high_risk": false,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "get the reviews on a pull request"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "findings": [
+    {
+      "severity": "HIGH",
+      "category": "scope",
+      "title": "Unexpected file capability: create_or_update_file",
+      "detail": "Tool classified as FILE but server purpose does not include file operations. Matched: create or update a single file",
+      "tool_name": "create_or_update_file"
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "live_tests": null,
+  "server_description": "Official MCP GitHub Server (modelcontextprotocol/servers)"
+}

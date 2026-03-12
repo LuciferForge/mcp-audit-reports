@@ -1,0 +1,79 @@
+[
+  {
+    "name": "filesystem-server",
+    "description": "Official MCP Filesystem Server (@modelcontextprotocol/server-filesystem)",
+    "version": "0.2.0",
+    "score": 85,
+    "grade": "B",
+    "tools": 14,
+    "findings": 1,
+    "risk_profile": "FILE (purpose-aligned)",
+    "error": ""
+  },
+  {
+    "name": "github-server",
+    "description": "Official MCP GitHub Server (@modelcontextprotocol/server-github)",
+    "version": "0.6.2",
+    "score": 94,
+    "grade": "A",
+    "tools": 26,
+    "findings": 1,
+    "risk_profile": "FILE",
+    "error": ""
+  },
+  {
+    "name": "memory-server",
+    "description": "Official MCP Memory Server (@modelcontextprotocol/server-memory)",
+    "version": "0.6.3",
+    "score": 92,
+    "grade": "A",
+    "tools": 9,
+    "findings": 1,
+    "risk_profile": "DATABASE",
+    "error": ""
+  },
+  {
+    "name": "fetch-server",
+    "description": "Official MCP Fetch Server (mcp-server-fetch, Python)",
+    "version": "1.26.0",
+    "score": 100,
+    "grade": "A",
+    "tools": 1,
+    "findings": 0,
+    "risk_profile": "NETWORK (purpose-aligned)",
+    "error": ""
+  },
+  {
+    "name": "git-server",
+    "description": "Official MCP Git Server (mcp-server-git, Python)",
+    "version": "1.26.0",
+    "score": 90,
+    "grade": "A",
+    "tools": 12,
+    "findings": 1,
+    "risk_profile": "SAFE",
+    "error": ""
+  },
+  {
+    "name": "sqlite-server",
+    "description": "Official MCP SQLite Server (mcp-server-sqlite, Python)",
+    "version": "0.1.0",
+    "score": 95,
+    "grade": "A",
+    "tools": 6,
+    "findings": 1,
+    "risk_profile": "DATABASE (purpose-aligned)",
+    "error": ""
+  },
+  {
+    "name": "time-server",
+    "description": "Official MCP Time Server (mcp-server-time, Python)",
+    "version": "1.26.0",
+    "score": 95,
+    "grade": "A",
+    "tools": 2,
+    "findings": 1,
+    "risk_profile": "SAFE",
+    "error": ""
+  }
+]

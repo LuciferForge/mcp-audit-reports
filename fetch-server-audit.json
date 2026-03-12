@@ -1,0 +1,50 @@
+{
+  "server": "python3 -m mcp_server_fetch",
+  "server_name": "mcp-fetch",
+  "server_version": "1.26.0",
+  "risk_profile": "NETWORK",
+  "server_purpose": [
+    "NETWORK"
+  ],
+  "purpose_aligned": true,
+  "hygiene_score": 100,
+  "grade": "A",
+  "hygiene_breakdown": {
+    "documentation": 25,
+    "schema_rigor": 25,
+    "injection_safety": 25,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 1,
+    "resource_count": 0,
+    "prompt_count": 1,
+    "finding_count": 0,
+    "high_risk_tools": 0
+  },
+  "tools": [
+    {
+      "name": "fetch",
+      "category": "NETWORK",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "url",
+        "fetch fetches a url"
+      ],
+      "confidence": 1.4
+    }
+  ],
+  "findings": [],
+  "resources": [],
+  "prompts": [
+    {
+      "name": "fetch",
+      "description": "Fetch a URL and extract its contents as markdown"
+    }
+  ],
+  "live_tests": null,
+  "server_description": "Official MCP Fetch Server (Python - modelcontextprotocol/servers)"
+}

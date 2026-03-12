@@ -1,0 +1,114 @@
+{
+  "server": "npx -y @modelcontextprotocol/server-memory",
+  "server_name": "memory-server",
+  "server_version": "0.6.3",
+  "risk_profile": "DATABASE",
+  "server_purpose": [],
+  "purpose_aligned": true,
+  "hygiene_score": 92,
+  "grade": "A",
+  "hygiene_breakdown": {
+    "documentation": 22.5,
+    "schema_rigor": 20.0,
+    "injection_safety": 25,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 9,
+    "resource_count": 0,
+    "prompt_count": 0,
+    "finding_count": 1,
+    "high_risk_tools": 0
+  },
+  "tools": [
+    {
+      "name": "create_entities",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "create_relations",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "add_observations",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "delete_entities",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "delete_observations",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "delete_relations",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "read_graph",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "search_nodes",
+      "category": "DATABASE",
+      "is_high_risk": false,
+      "purpose_aligned": false,
+      "matched_patterns": [
+        "query"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "name": "open_nodes",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    }
+  ],
+  "findings": [
+    {
+      "severity": "LOW",
+      "category": "schema",
+      "title": "No string parameters use constraints",
+      "detail": "1 string params lack enum, pattern, maxLength, or format",
+      "tool_name": null
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "live_tests": null,
+  "server_description": "Official MCP Memory Server (modelcontextprotocol/servers)"
+}

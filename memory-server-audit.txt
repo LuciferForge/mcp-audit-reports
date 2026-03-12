@@ -1,0 +1,48 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       memory-server v0.6.3
+  Tools:        9
+  Risk Profile: DATABASE
+  Hygiene:      92/100  (Grade A)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 22.5   /25
+  Schema Rigor                  20.0   /25
+  Injection Safety              25.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                           92  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  create_entities                SAFE         -
+  create_relations               SAFE         -
+  add_observations               SAFE         -
+  delete_entities                SAFE         -
+  delete_observations            SAFE         -
+  delete_relations               SAFE         -
+  read_graph                     SAFE         -
+  search_nodes                   DATABASE     query
+  open_nodes                     SAFE         -
+
+------------------------------------------------------------
+  FINDINGS
+------------------------------------------------------------
+  .. [LOW] No string parameters use constraints
+     1 string params lack enum, pattern, maxLength, or format
+
+------------------------------------------------------------
+  Risk Profile: DATABASE  |  Hygiene: 92/100 Grade A
+  Findings: 1
+    LOW: 1
+============================================================

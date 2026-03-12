@@ -1,0 +1,65 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       github-mcp-server v0.6.2
+  Tools:        26
+  Risk Profile: FILE
+  Hygiene:      94/100  (Grade A)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 23.0   /25
+  Schema Rigor                  20.8   /25
+  Injection Safety              25.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                           94  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  create_or_update_file          FILE       !!create or update a single file
+  search_repositories            SAFE         -
+  create_repository              SAFE         -
+  get_file_contents              SAFE         -
+  push_files                     SAFE         -
+  create_issue                   SAFE         -
+  create_pull_request            SAFE         -
+  fork_repository                SAFE         -
+  create_branch                  SAFE         -
+  list_commits                   SAFE         -
+  list_issues                    SAFE         -
+  update_issue                   SAFE         -
+  add_issue_comment              SAFE         -
+  search_code                    SAFE         -
+  search_issues                  SAFE         -
+  search_users                   SAFE         -
+  get_issue                      SAFE         -
+  get_pull_request               NETWORK      get details of a specific pull request
+  list_pull_requests             SAFE         -
+  create_pull_request_review     SAFE         -
+  merge_pull_request             SAFE         -
+  get_pull_request_files         NETWORK      get the list of files changed in a pull ...
+  get_pull_request_status        NETWORK      get the combined status of all status ch...
+  update_pull_request_branch     SAFE         -
+  get_pull_request_comments      NETWORK      get the review comments on a pull reques...
+  get_pull_request_reviews       NETWORK      get the reviews on a pull request
+
+------------------------------------------------------------
+  FINDINGS
+------------------------------------------------------------
+  !! [HIGH] Unexpected file capability: create_or_update_file
+     Tool classified as FILE but server purpose does not include file operations. Matched: create or update a single file
+
+------------------------------------------------------------
+  Risk Profile: FILE  |  Hygiene: 94/100 Grade A
+  Findings: 1
+    HIGH: 1
+============================================================

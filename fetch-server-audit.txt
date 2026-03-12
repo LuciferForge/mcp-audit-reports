@@ -1,0 +1,36 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       mcp-fetch v1.26.0
+  Tools:        1
+  Risk Profile: NETWORK
+  Purpose:      NETWORK
+  Hygiene:      100/100  (Grade A)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 25.0   /25
+  Schema Rigor                  25.0   /25
+  Injection Safety              25.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                          100  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  fetch                          NETWORK      url, fetch fetches a url
+
+  No findings — server looks clean.
+
+------------------------------------------------------------
+  Risk Profile: NETWORK  |  Hygiene: 100/100 Grade A
+  Findings: 0
+============================================================

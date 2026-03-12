@@ -1,0 +1,51 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       mcp-git v1.26.0
+  Tools:        12
+  Risk Profile: SAFE
+  Hygiene:      90/100  (Grade A)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 19.9   /25
+  Schema Rigor                  20.0   /25
+  Injection Safety              25.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                           90  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  git_status                     SAFE         -
+  git_diff_unstaged              SAFE         -
+  git_diff_staged                SAFE         -
+  git_diff                       SAFE         -
+  git_commit                     SAFE         -
+  git_add                        SAFE         -
+  git_reset                      SAFE         -
+  git_log                        SAFE         -
+  git_create_branch              SAFE         -
+  git_checkout                   SAFE         -
+  git_show                       SAFE         -
+  git_branch                     SAFE         -
+
+------------------------------------------------------------
+  FINDINGS
+------------------------------------------------------------
+  .. [LOW] No string parameters use constraints
+     18 string params lack enum, pattern, maxLength, or format
+
+------------------------------------------------------------
+  Risk Profile: SAFE  |  Hygiene: 90/100 Grade A
+  Findings: 1
+    LOW: 1
+============================================================

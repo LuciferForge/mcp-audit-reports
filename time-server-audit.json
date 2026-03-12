@@ -1,0 +1,56 @@
+{
+  "server": "python3 -m mcp_server_time",
+  "server_name": "mcp-time",
+  "server_version": "1.26.0",
+  "risk_profile": "SAFE",
+  "server_purpose": [],
+  "purpose_aligned": true,
+  "hygiene_score": 95,
+  "grade": "A",
+  "hygiene_breakdown": {
+    "documentation": 25,
+    "schema_rigor": 20.0,
+    "injection_safety": 25,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 2,
+    "resource_count": 0,
+    "prompt_count": 0,
+    "finding_count": 1,
+    "high_risk_tools": 0
+  },
+  "tools": [
+    {
+      "name": "get_current_time",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "convert_time",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    }
+  ],
+  "findings": [
+    {
+      "severity": "LOW",
+      "category": "schema",
+      "title": "No string parameters use constraints",
+      "detail": "4 string params lack enum, pattern, maxLength, or format",
+      "tool_name": null
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "live_tests": null,
+  "server_description": "Official MCP Time Server (Python - modelcontextprotocol/servers)"
+}

@@ -1,0 +1,54 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       secure-filesystem-server v0.2.0
+  Tools:        14
+  Risk Profile: FILE (purpose-aligned)
+  Purpose:      FILE
+  Hygiene:      85/100  (Grade B)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 21.4   /25
+  Schema Rigor                  20.3   /25
+  Injection Safety              18.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                           85  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  read_file                      FILE       okread_file, read the complete contents of a file
+  read_text_file                 FILE       oksystem, read the complete contents of a file fro..., file from the file system as text. handl...
+  read_media_file                FILE       okread an image or audio file
+  read_multiple_files            FILE       okread the contents of multiple files simu...
+  write_file                     FILE       okwrite_file, create a new file or completely overwrit...
+  edit_file                      FILE       okfile. each edit
+  create_directory               SAFE         -
+  list_directory                 SAFE         -
+  list_directory_with_sizes      SAFE         -
+  directory_tree                 SAFE         -
+  move_file                      SAFE         -
+  search_files                   SAFE         -
+  get_file_info                  SAFE         -
+  list_allowed_directories       SAFE         -
+
+------------------------------------------------------------
+  FINDINGS
+------------------------------------------------------------
+  -- [MEDIUM] Injection pattern in tool description: read_media_file
+     Severity MEDIUM, score 6. Patterns: ['base64_injection']
+
+------------------------------------------------------------
+  Risk Profile: FILE (purpose-aligned)  |  Hygiene: 85/100 Grade B
+  Findings: 1
+    MEDIUM: 1
+============================================================

@@ -1,0 +1,46 @@
+============================================================
+  MCP SECURITY AUDIT REPORT
+============================================================
+
+  Server:       sqlite v0.1.0
+  Tools:        6
+  Risk Profile: DATABASE
+  Purpose:      DATABASE
+  Hygiene:      95/100  (Grade A)
+
+------------------------------------------------------------
+  HYGIENE SCORE BREAKDOWN
+------------------------------------------------------------
+  Category                      Score   Max
+  --------------------------- ------  ----
+  Documentation                 25.0   /25
+  Schema Rigor                  20.0   /25
+  Injection Safety              25.0   /25
+  Scope & Least Privilege       15.0   /15
+  Metadata                      10.0   /10
+  --------------------------- ------  ----
+  TOTAL                           95  /100
+
+------------------------------------------------------------
+  TOOL CLASSIFICATION
+------------------------------------------------------------
+  Tool                           Risk       Matched
+  ----------------------------- --------- ------------------
+  read_query                     DATABASE     query, sqlite
+  write_query                    DATABASE     query, sqlite
+  create_table                   DATABASE     database, sqlite
+  list_tables                    DATABASE     database, sqlite
+  describe_table                 SAFE         -
+  append_insight                 SAFE         -
+
+------------------------------------------------------------
+  FINDINGS
+------------------------------------------------------------
+  .. [LOW] No string parameters use constraints
+     5 string params lack enum, pattern, maxLength, or format
+
+------------------------------------------------------------
+  Risk Profile: DATABASE  |  Hygiene: 95/100 Grade A
+  Findings: 1
+    LOW: 1
+============================================================

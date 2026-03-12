@@ -1,0 +1,170 @@
+{
+  "server": "npx -y @modelcontextprotocol/server-filesystem /tmp",
+  "server_name": "secure-filesystem-server",
+  "server_version": "0.2.0",
+  "risk_profile": "FILE (purpose-aligned)",
+  "server_purpose": [
+    "FILE"
+  ],
+  "purpose_aligned": true,
+  "hygiene_score": 85,
+  "grade": "B",
+  "hygiene_breakdown": {
+    "documentation": 21.4,
+    "schema_rigor": 20.3,
+    "injection_safety": 18,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 14,
+    "resource_count": 0,
+    "prompt_count": 0,
+    "finding_count": 1,
+    "high_risk_tools": 6
+  },
+  "tools": [
+    {
+      "name": "read_file",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "read_file",
+        "read the complete contents of a file"
+      ],
+      "confidence": 1.9
+    },
+    {
+      "name": "read_text_file",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "system",
+        "read the complete contents of a file fro...",
+        "file from the file system as text. handl..."
+      ],
+      "confidence": 1.8
+    },
+    {
+      "name": "read_media_file",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "read an image or audio file"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "name": "read_multiple_files",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "read the contents of multiple files simu..."
+      ],
+      "confidence": 0.9
+    },
+    {
+      "name": "write_file",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "write_file",
+        "create a new file or completely overwrit..."
+      ],
+      "confidence": 1.9
+    },
+    {
+      "name": "edit_file",
+      "category": "FILE",
+      "is_high_risk": true,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "file. each edit"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "name": "create_directory",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "list_directory",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "list_directory_with_sizes",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "directory_tree",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "move_file",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "search_files",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "get_file_info",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "list_allowed_directories",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    }
+  ],
+  "findings": [
+    {
+      "severity": "MEDIUM",
+      "category": "injection",
+      "title": "Injection pattern in tool description: read_media_file",
+      "detail": "Severity MEDIUM, score 6. Patterns: ['base64_injection']",
+      "tool_name": "read_media_file"
+    }
+  ],
+  "resources": [],
+  "prompts": [],
+  "live_tests": null,
+  "server_description": "Official MCP Filesystem Server (modelcontextprotocol/servers)"
+}

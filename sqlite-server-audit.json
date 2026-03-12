@@ -1,0 +1,113 @@
+{
+  "server": "python3 -c \"from mcp_server_sqlite import main; main()\" --db-path /tmp/test_audit.db",
+  "server_name": "sqlite",
+  "server_version": "0.1.0",
+  "risk_profile": "DATABASE",
+  "server_purpose": [
+    "DATABASE"
+  ],
+  "purpose_aligned": true,
+  "hygiene_score": 95,
+  "grade": "A",
+  "hygiene_breakdown": {
+    "documentation": 25,
+    "schema_rigor": 20.0,
+    "injection_safety": 25,
+    "scope_signals": 15.0,
+    "metadata": 10
+  },
+  "error": null,
+  "summary": {
+    "tool_count": 6,
+    "resource_count": 1,
+    "prompt_count": 1,
+    "finding_count": 1,
+    "high_risk_tools": 0
+  },
+  "tools": [
+    {
+      "name": "read_query",
+      "category": "DATABASE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "query",
+        "sqlite"
+      ],
+      "confidence": 1.9
+    },
+    {
+      "name": "write_query",
+      "category": "DATABASE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "query",
+        "sqlite"
+      ],
+      "confidence": 1.9
+    },
+    {
+      "name": "create_table",
+      "category": "DATABASE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "database",
+        "sqlite"
+      ],
+      "confidence": 1.9
+    },
+    {
+      "name": "list_tables",
+      "category": "DATABASE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [
+        "database",
+        "sqlite"
+      ],
+      "confidence": 1.9
+    },
+    {
+      "name": "describe_table",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    },
+    {
+      "name": "append_insight",
+      "category": "SAFE",
+      "is_high_risk": false,
+      "purpose_aligned": true,
+      "matched_patterns": [],
+      "confidence": 0.0
+    }
+  ],
+  "findings": [
+    {
+      "severity": "LOW",
+      "category": "schema",
+      "title": "No string parameters use constraints",
+      "detail": "5 string params lack enum, pattern, maxLength, or format",
+      "tool_name": null
+    }
+  ],
+  "resources": [
+    {
+      "uri": "memo://insights",
+      "name": "Business Insights Memo",
+      "description": "A living document of discovered business insights"
+    }
+  ],
+  "prompts": [
+    {
+      "name": "mcp-demo",
+      "description": "A prompt to seed the database with initial data and demonstrate what you can do with an SQLite MCP Server + Claude"
+    }
+  ],
+  "live_tests": null,
+  "server_description": "Official MCP SQLite Server (Python - modelcontextprotocol/servers)"
+}
