@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MCP Security Audit Reports — LuciferForge</title>
-    <meta name="description" content="Professional MCP server security and EU AI Act compliance audit reports. $200 per report. Used by teams deploying AI agents in regulated environments.">
+    <meta name="description" content="Professional MCP server security and EU AI Act compliance audit reports. $29 per report. Used by teams deploying AI agents in regulated environments.">
     <style>
         :root {
             --black: #0D0D0D;
@@ -311,6 +311,67 @@
             color: white;
             border: 1px solid #333;
         }
+        .payment-options {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #222;
+        }
+        .payment-options p {
+            font-size: 11px;
+            color: var(--gray);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .payment-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+        .payment-badge {
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 3px;
+            border: 1px solid #333;
+            color: #aaa;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .payment-badge:hover { border-color: #666; color: white; }
+        .payment-badge.crypto { border-color: #f7931a55; color: #f7931a; }
+        .usdt-modal {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            z-index: 100;
+            align-items: center;
+            justify-content: center;
+        }
+        .usdt-modal.open { display: flex; }
+        .usdt-box {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 32px;
+            max-width: 440px;
+            width: 90%;
+        }
+        .usdt-box h3 { font-size: 16px; margin-bottom: 8px; }
+        .usdt-box p { font-size: 13px; color: var(--gray); margin-bottom: 16px; }
+        .usdt-addr {
+            background: #0d0d0d;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 12px;
+            word-break: break-all;
+            color: #f7931a;
+            margin-bottom: 12px;
+        }
+        .usdt-close {
+            font-size: 13px;
+            color: var(--gray);
+            cursor: pointer;
+            text-decoration: underline;
+        }
 
         /* WHO IT'S FOR */
         .audience {
@@ -375,7 +436,7 @@
 <nav>
     <div class="container">
         <div class="nav-brand"><span>Lucifer</span>Forge Security</div>
-        <a href="mailto:LuciferForge@proton.me?subject=Audit Report Request" class="nav-cta">Request Audit — $200</a>
+        <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1" class="nav-cta">Get Audit — $29</a>
     </div>
 </nav>
 
@@ -391,8 +452,8 @@
                 We audit MCP servers against EU AI Act Articles 9, 11, 13, 15 and 17 — and produce a signed PDF compliance report with every finding mapped to a specific regulatory requirement and a prioritized remediation roadmap.
             </p>
             <div class="hero-ctas">
-                <a href="mailto:LuciferForge@proton.me?subject=Audit Report Request" class="btn-primary">Request an Audit — $200</a>
-                <a href="output/LF-2026-DEMO_filesystem_server_audit.pdf" class="btn-secondary" target="_blank">View Demo Report (PDF)</a>
+                <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1" class="btn-primary">Get Audit — $29</a>
+                <a href="LF-2026-DEMO_filesystem_server_audit.pdf" class="btn-secondary" target="_blank">View Demo Report (PDF)</a>
             </div>
         </div>
     </section>
@@ -444,7 +505,7 @@
                 13 of 14 tools have no descriptions. 28 string parameters have zero input constraints. Destructive tools (delete_file, write_file, move_file) are undocumented. If the official reference server scores F — what does yours score?
             </p>
             <p style="margin-top:14px;">
-                <a href="output/LF-2026-DEMO_filesystem_server_audit.pdf" target="_blank" style="color:var(--accent); font-size:13px; font-weight:600;">Download the full demo report (PDF) →</a>
+                <a href="LF-2026-DEMO_filesystem_server_audit.pdf" target="_blank" style="color:var(--accent); font-size:13px; font-weight:600;">Download the full demo report (PDF) →</a>
             </p>
         </div>
     </div>
@@ -513,7 +574,7 @@
             <div class="pricing-grid">
                 <div class="pricing-card">
                     <div class="plan-name">Single Server Audit</div>
-                    <div class="plan-price">$200</div>
+                    <div class="plan-price">$29</div>
                     <div class="plan-cycle">one-time, per server</div>
                     <ul>
                         <li>Full 6-section PDF report</li>
@@ -523,7 +584,14 @@
                         <li>Tool inventory table</li>
                         <li>3-day turnaround</li>
                     </ul>
-                    <a href="mailto:LuciferForge@proton.me?subject=Audit Request — Single Server" class="card-cta secondary">Request Audit</a>
+                    <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1" class="card-cta secondary">Request Audit — Email</a>
+                    <div class="payment-options">
+                        <p>Also accept</p>
+                        <div class="payment-badges">
+                            <span class="payment-badge crypto" onclick="document.getElementById('usdtModal').classList.add('open')">USDT (TRC-20)</span>
+                            <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1" class="payment-badge">Email invoice</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="pricing-card featured">
                     <div class="plan-name">Multi-Server / Team Audit</div>
@@ -539,6 +607,13 @@
                         <li>30-day follow-up re-audit included</li>
                     </ul>
                     <a href="mailto:LuciferForge@proton.me?subject=Audit Request — Multi-Server" class="card-cta primary">Request Engagement</a>
+                    <div class="payment-options">
+                        <p>Also accept</p>
+                        <div class="payment-badges">
+                            <span class="payment-badge crypto" onclick="document.getElementById('usdtModal').classList.add('open')">USDT (TRC-20)</span>
+                            <a href="mailto:LuciferForge@proton.me?subject=Audit Request — Multi-Server" class="payment-badge">Email invoice</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -580,7 +655,7 @@
         <div class="container">
             <h2>Know What Your Agent Is Exposing</h2>
             <p>EU AI Act enforcement is approaching. Your MCP servers are your AI attack surface.<br>Get the audit. Have the documentation. Ship with confidence.</p>
-            <a href="mailto:LuciferForge@proton.me?subject=Audit Report Request" class="btn-primary" style="font-size:16px; padding:16px 36px;">Request an Audit — $200</a>
+            <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1" class="btn-primary" style="font-size:16px; padding:16px 36px;">Get Audit — $29</a>
         </div>
     </section>
 </main>
@@ -591,6 +666,31 @@
         <p style="margin-top:6px;">Open-source tools: <a href="https://pypi.org/project/mcp-security-audit/">mcp-security-audit</a> &mdash; <a href="https://pypi.org/project/agentcred/">agentcred</a> &mdash; <a href="https://pypi.org/project/kya-agent/">kya-agent</a></p>
     </div>
 </footer>
+
+<!-- USDT Payment Modal -->
+<div class="usdt-modal" id="usdtModal">
+    <div class="usdt-box">
+        <h3>Pay with USDT (TRC-20)</h3>
+        <p>Send exact amount to the address below. Then email LuciferForge@proton.me with your transaction hash and MCP server repo link. Report delivered within 3 days of payment confirmation.</p>
+        <div class="usdt-addr" id="usdtAddr"><!-- REPLACE_WITH_BINANCE_TRC20_ADDRESS --></div>
+        <p style="font-size:11px; color:#666; margin-bottom:16px;">⚠️ TRC-20 network only. Sending on other networks will result in lost funds.</p>
+        <span class="usdt-close" onclick="document.getElementById('usdtModal').classList.remove('open')">Close</span>
+    </div>
+</div>
+
+<script>
+// Close modal on outside click
+document.getElementById('usdtModal').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('open');
+});
+// Copy address on click
+document.getElementById('usdtAddr').addEventListener('click', function() {
+    navigator.clipboard.writeText(this.innerText).then(() => {
+        this.style.color = '#27AE60';
+        setTimeout(() => this.style.color = '#f7931a', 1500);
+    });
+});
+</script>
 
 </body>
 </html>
