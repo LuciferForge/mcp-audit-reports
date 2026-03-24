@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Your MCP Server — LuciferForge Security</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Inter', -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .container {
+            max-width: 560px;
+            width: 100%;
+        }
+        .logo {
+            font-size: 13px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        .logo span { color: #c0392b; }
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #0d2b0d;
+            border: 1px solid #1a4a1a;
+            color: #4caf50;
+            font-size: 12px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-bottom: 24px;
+        }
+        .badge::before { content: '✓'; font-weight: 700; }
+        h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.2;
+        }
+        .sub {
+            color: #888;
+            font-size: 15px;
+            margin-bottom: 36px;
+            line-height: 1.6;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 13px;
+            color: #aaa;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        label span { color: #c0392b; }
+        input, select, textarea {
+            width: 100%;
+            background: #111;
+            border: 1px solid #2a2a2a;
+            border-radius: 6px;
+            padding: 12px 16px;
+            color: #e0e0e0;
+            font-size: 15px;
+            font-family: inherit;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+        input:focus, select:focus, textarea:focus {
+            border-color: #c0392b;
+        }
+        textarea { resize: vertical; min-height: 80px; }
+        select option { background: #111; }
+        .hint {
+            font-size: 12px;
+            color: #555;
+            margin-top: 6px;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #c0392b;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }
+        .submit-btn:hover { background: #e74c3c; }
+        .submit-btn:disabled { background: #555; cursor: not-allowed; }
+        .timeline {
+            margin-top: 32px;
+            padding: 20px;
+            background: #111;
+            border: 1px solid #1e1e1e;
+            border-radius: 8px;
+        }
+        .timeline h3 { font-size: 13px; color: #666; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 16px; }
+        .step {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            align-items: flex-start;
+        }
+        .step-num {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #888;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+        .step-text { font-size: 13px; color: #888; line-height: 1.5; }
+        .step-text strong { color: #ccc; }
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        .success-msg .check {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+        .success-msg h2 { font-size: 22px; margin-bottom: 12px; }
+        .success-msg p { color: #888; font-size: 15px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="logo"><span>LUCIFER</span>FORGE Security</div>
+
+    <div class="badge">Payment confirmed — submit your server details</div>
+
+    <h1>Submit Your MCP Server</h1>
+    <p class="sub">We'll audit your server and deliver a signed PDF compliance report within 48 hours.</p>
+
+    <form id="audit-form">
+        <!-- Web3Forms access key — replace with your key from web3forms.com -->
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY">
+        <input type="hidden" name="subject" value="New MCP Audit Order">
+        <input type="hidden" name="from_name" value="MCP Audit Orders">
+        <input type="hidden" name="redirect" value="false">
+
+        <div class="form-group">
+            <label>Your Name <span>*</span></label>
+            <input type="text" name="name" required placeholder="Jane Smith">
+        </div>
+
+        <div class="form-group">
+            <label>Email Address <span>*</span></label>
+            <input type="email" name="email" required placeholder="you@company.com">
+            <div class="hint">We'll send the PDF report here</div>
+        </div>
+
+        <div class="form-group">
+            <label>GitHub Repository URL <span>*</span></label>
+            <input type="url" name="github_repo" required placeholder="https://github.com/org/your-mcp-server">
+            <div class="hint">The MCP server repo you want audited</div>
+        </div>
+
+        <div class="form-group">
+            <label>Server Install Command</label>
+            <input type="text" name="server_command" placeholder="npx -y @your-org/mcp-server">
+            <div class="hint">How to run your server (optional — we'll try npx/pip from the repo)</div>
+        </div>
+
+        <div class="form-group">
+            <label>Organization / Company Name</label>
+            <input type="text" name="company" placeholder="Acme Corp (or leave blank for personal)">
+        </div>
+
+        <div class="form-group">
+            <label>Compliance Context</label>
+            <select name="compliance_context">
+                <option value="">Select if applicable</option>
+                <option value="eu-ai-act">EU AI Act compliance</option>
+                <option value="enterprise-customer">Enterprise customer due diligence</option>
+                <option value="ciso-review">CISO / security team review</option>
+                <option value="general">General security hardening</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Additional Notes</label>
+            <textarea name="notes" placeholder="Anything specific you want us to focus on (auth flow, data handling, specific tools...)"></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Submit Server for Audit →</button>
+    </form>
+
+    <div class="success-msg" id="success">
+        <div class="check">✓</div>
+        <h2>Submission received</h2>
+        <p>We'll run the audit and send your PDF report to the email address you provided.<br><br>
+        Expect delivery within <strong>48 hours</strong>.<br><br>
+        Questions? Email <a href="mailto:LuciferForge@proton.me" style="color:#c0392b;">LuciferForge@proton.me</a></p>
+    </div>
+
+    <div class="timeline">
+        <h3>What happens next</h3>
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-text"><strong>Submit above</strong> — your server URL and contact details</div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-text"><strong>We audit within 24h</strong> — tool inventory, injection surface, output sanitization, EU AI Act mapping</div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-text"><strong>PDF delivered within 48h</strong> — signed report, severity ratings, remediation roadmap</div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.getElementById('audit-form').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Submitting...';
+
+    const formData = new FormData(this);
+    const data = Object.fromEntries(formData);
+
+    try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(data)
+        });
+        const result = await response.json();
+
+        if (result.success) {
+            document.getElementById('audit-form').style.display = 'none';
+            document.getElementById('success').style.display = 'block';
+        } else {
+            btn.disabled = false;
+            btn.textContent = 'Submit Server for Audit →';
+            alert('Something went wrong. Please email LuciferForge@proton.me directly with your repo URL.');
+        }
+    } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Submit Server for Audit →';
+        alert('Network error. Please email LuciferForge@proton.me with your repo URL and we\'ll get started.');
+    }
+});
+</script>
+</body>
+</html>
