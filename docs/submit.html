@@ -148,17 +148,24 @@
 <div class="container">
     <div class="logo"><span>LUCIFER</span>FORGE Security</div>
 
-    <div class="badge">Payment confirmed — submit your server details</div>
+    <div class="badge" id="payment-badge">Verifying payment...</div>
+    <div id="no-payment" style="display:none; text-align:center; padding:40px 0;">
+        <h2 style="color:#c0392b;">Payment Required</h2>
+        <p style="color:#888; margin-top:12px;">Please complete payment first before submitting your server.</p>
+        <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1&redirect_url=https%3A%2F%2Fluciferforge.github.io%2Fmcp-audit-reports%2Fsubmit.html" style="display:inline-block; margin-top:20px; background:#c0392b; color:white; padding:12px 24px; border-radius:6px; text-decoration:none; font-weight:600;">Pay $29 →</a>
+    </div>
 
     <h1>Submit Your MCP Server</h1>
     <p class="sub">We'll audit your server and deliver a signed PDF compliance report within 48 hours.</p>
 
     <form id="audit-form" action="https://api.web3forms.com/submit" method="POST">
-        <!-- Web3Forms access key — replace with your key from web3forms.com -->
+        <!-- Web3Forms access key -->
         <input type="hidden" name="access_key" value="b2fb1576-a39b-4683-8ee9-4e152f731113">
         <input type="hidden" name="subject" value="New MCP Audit Order">
         <input type="hidden" name="from_name" value="MCP Audit Orders">
         <input type="hidden" name="redirect" value="false">
+        <input type="hidden" name="payment_id" id="payment_id_field" value="">
+        <input type="hidden" name="payment_status" id="payment_status_field" value="">
 
         <div class="form-group">
             <label>Your Name <span>*</span></label>
@@ -233,6 +240,37 @@
 </div>
 
 <script>
+// Gate: check payment_id from Dodo redirect
+const params = new URLSearchParams(window.location.search);
+const paymentId = params.get('payment_id') || '';
+const paymentStatus = params.get('status') || '';
+const paymentEmail = params.get('email') || '';
+
+const badge = document.getElementById('payment-badge');
+const form = document.getElementById('audit-form');
+const noPayment = document.getElementById('no-payment');
+
+if (paymentId && paymentStatus === 'succeeded') {
+    badge.textContent = 'Payment confirmed — submit your server details';
+    badge.style.background = '#0d2b0d';
+    badge.style.borderColor = '#1a4a1a';
+    badge.style.color = '#4caf50';
+    document.getElementById('payment_id_field').value = paymentId;
+    document.getElementById('payment_status_field').value = paymentStatus;
+    // Pre-fill email if Dodo provided it
+    if (paymentEmail) {
+        const emailField = form.querySelector('input[name="email"]');
+        if (emailField) emailField.value = paymentEmail;
+    }
+} else {
+    badge.style.display = 'none';
+    form.style.display = 'none';
+    document.querySelector('h1').style.display = 'none';
+    document.querySelector('.sub').style.display = 'none';
+    document.querySelector('.timeline').style.display = 'none';
+    noPayment.style.display = 'block';
+}
+
 document.getElementById('audit-form').addEventListener('submit', async function(e) {
     e.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -252,7 +290,7 @@ document.getElementById('audit-form').addEventListener('submit', async function(
         const result = await response.json();
 
         // Notify via Telegram (notification only — auto-audit triggered by file queue on server)
-        const notifyMsg = `🔔 New audit order!\n${data.name} (${data.email})\nRepo: ${data.github_repo}\nAuto-audit processing...`;
+        const notifyMsg = `🔔 New audit order!\nPayment: ${data.payment_id || 'NONE'}\n${data.name} (${data.email})\nRepo: ${data.github_repo}\nAuto-audit processing...`;
         fetch('https://api.telegram.org/bot8688584707:AAEnTSICG1Vgkn_0i1DTt-L0we3GAy-Jp7A/sendMessage', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
