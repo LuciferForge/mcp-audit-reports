@@ -15,7 +15,7 @@ PAYPAL_EMAIL = os.getenv("PAYPAL_EMAIL", "")
 STRIPE_KEY = os.getenv("STRIPE_SECRET_KEY", "")  # Future
 
 # Report pricing (USD)
-PRICE_SINGLE = 200
+PRICE_SINGLE = 29
 PRICE_MULTI = 500
 
 # Output paths
