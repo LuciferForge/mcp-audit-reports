@@ -33,8 +33,10 @@ from pathlib import Path
 ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(ROOT))
 
-TELEGRAM_BOT_TOKEN = "8688584707:AAEnTSICG1Vgkn_0i1DTt-L0we3GAy-Jp7A"
-TELEGRAM_CHAT_ID   = "257190241"
+# Token + chat ID from environment ONLY. Never hardcode here — this file is
+# in a public repo. Set via launchd EnvironmentVariables or shell rc.
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 ORDERS_LOG         = ROOT / "output" / "orders.jsonl"
 OUTPUT_DIR         = ROOT / "output"
 

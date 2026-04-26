@@ -26,8 +26,12 @@ ROOT = Path(__file__).parent.parent
 TOOLS = ROOT / "tools"
 OUTPUT = ROOT / "output"
 
-TG_TOKEN = "8688584707:AAEnTSICG1Vgkn_0i1DTt-L0we3GAy-Jp7A"
-TG_CHAT  = "257190241"
+# Token + chat ID from environment ONLY. Never hardcode here — this file is
+# in a public repo. Set via launchd EnvironmentVariables or shell rc.
+TG_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+TG_CHAT  = os.environ.get("TELEGRAM_CHAT_ID", "")
+if not TG_TOKEN:
+    raise RuntimeError("TELEGRAM_BOT_TOKEN env var required (do not hardcode tokens here — public repo)")
 POLL_INTERVAL = 30  # seconds
 OFFSET_FILE = ROOT / "tools" / ".order_watcher_offset"
 

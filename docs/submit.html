@@ -152,7 +152,7 @@
     <div id="no-payment" style="display:none; text-align:center; padding:40px 0;">
         <h2 style="color:#c0392b;">Payment Required</h2>
         <p style="color:#888; margin-top:12px;">Please complete payment first before submitting your server.</p>
-        <a href="https://checkout.dodopayments.com/buy/pdt_0NbCJnd3rl0VxTkSI7jlj?quantity=1&redirect_url=https%3A%2F%2Fluciferforge.github.io%2Fmcp-audit-reports%2Fsubmit.html" style="display:inline-block; margin-top:20px; background:#c0392b; color:white; padding:12px 24px; border-radius:6px; text-decoration:none; font-weight:600;">Pay $29 →</a>
+        <a href="https://manja8.gumroad.com/l/mcp-security-audit" style="display:inline-block; margin-top:20px; background:#c0392b; color:white; padding:12px 24px; border-radius:6px; text-decoration:none; font-weight:600;">Pay $29 →</a>
     </div>
 
     <h1>Submit Your MCP Server</h1>
@@ -280,47 +280,42 @@ document.getElementById('audit-form').addEventListener('submit', async function(
     const formData = new FormData(this);
     const data = Object.fromEntries(formData);
 
+    // Server-side proxy on api.protodex.io forwards to Telegram with the
+    // bot token held server-side. Token NEVER lives in this client HTML.
+    // See SECURITY_INCIDENT_2026_04_26.md for the architectural rationale.
+    const PROXY = 'https://api.protodex.io/audit-orders';
+
     try {
-        // Submit to Web3Forms (email backup)
-        const response = await fetch('https://api.web3forms.com/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(data)
-        });
-        const result = await response.json();
+        // Web3Forms (email backup) + proxy (Telegram notification) in parallel
+        const [web3Resp, proxyResp] = await Promise.allSettled([
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(data)
+            }),
+            fetch(PROXY, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+        ]);
 
-        // Notify via Telegram (notification only — auto-audit triggered by file queue on server)
-        const notifyMsg = `🔔 New audit order!\nPayment: ${data.payment_id || 'NONE'}\n${data.name} (${data.email})\nRepo: ${data.github_repo}\nAuto-audit processing...`;
-        fetch('https://api.telegram.org/bot8688584707:AAEnTSICG1Vgkn_0i1DTt-L0we3GAy-Jp7A/sendMessage', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ chat_id: '257190241', text: notifyMsg })
-        }).catch(() => {});
+        const web3Ok = web3Resp.status === 'fulfilled' &&
+                       (await web3Resp.value.json().catch(() => ({}))).success;
+        const proxyOk = proxyResp.status === 'fulfilled' && proxyResp.value.ok;
 
-        if (result.success) {
+        if (web3Ok || proxyOk) {
             document.getElementById('audit-form').style.display = 'none';
             document.getElementById('success').style.display = 'block';
         } else {
-            // Web3Forms failed but Telegram got it — still show success
-            document.getElementById('audit-form').style.display = 'none';
-            document.getElementById('success').style.display = 'block';
-        }
-    } catch (err) {
-        // Try Telegram as fallback
-        const orderMsg = `/order\nemail: ${data.email}\nname: ${data.name}\nrepo: ${data.github_repo}\ncommand: ${data.server_command || 'auto'}\ncompany: ${data.company || 'personal'}`;
-        try {
-            await fetch('https://api.telegram.org/bot8688584707:AAEnTSICG1Vgkn_0i1DTt-L0we3GAy-Jp7A/sendMessage', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: '257190241', text: orderMsg })
-            });
-            document.getElementById('audit-form').style.display = 'none';
-            document.getElementById('success').style.display = 'block';
-        } catch (e) {
             btn.disabled = false;
             btn.textContent = 'Submit Server for Audit →';
-            alert('Network error. Please email LuciferForge@proton.me with your repo URL.');
+            alert('Submission failed. Please email LuciferForge@proton.me with your repo URL.');
         }
+    } catch (err) {
+        btn.disabled = false;
+        btn.textContent = 'Submit Server for Audit →';
+        alert('Network error. Please email LuciferForge@proton.me with your repo URL.');
     }
 });
 </script>
